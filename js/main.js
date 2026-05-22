@@ -24,49 +24,66 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if(form){
 
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
 
-            e.preventDefault();
+    e.preventDefault();
 
-            const nameInput =
-                form.querySelector('input[type="text"]');
+    const nameInput =
+        form.querySelector('input[type="text"]');
 
-            const phoneInput =
-                document.getElementById('phoneInput');
+    const phoneInput =
+        document.getElementById('phoneInput');
 
-            const name =
-                nameInput.value.trim();
+    const name =
+        nameInput.value.trim();
 
-            const phone =
-                phoneInput.value.trim();
+    const phone =
+        phoneInput.value.trim();
 
-            const nameRegex =
-                /^[А-Яа-яA-Za-zЁё\s]+$/;
+    const nameRegex =
+        /^[А-Яа-яA-Za-zЁё\s]+$/;
 
-            if(!nameRegex.test(name)){
+    if(!nameRegex.test(name)){
 
-                alert('Имя должно содержать только буквы');
+        alert('Имя должно содержать только буквы');
 
-                return;
+        return;
 
-            }
+    }
 
-            const phoneRegex =
-                /^[0-9+\-\s()]+$/;
+    const phoneRegex =
+        /^[0-9+\-\s()]+$/;
 
-            if(!phoneRegex.test(phone)){
+    if(!phoneRegex.test(phone)){
 
-                alert('Введите корректный номер телефона');
+        alert('Введите корректный номер телефона');
 
-                return;
+        return;
 
-            }
+    }
 
-            popup.classList.add('active');
+    const formData = new FormData(form);
 
-            form.reset();
+    const response = await fetch(form.action, {
 
-        });
+        method: 'POST',
+        body: formData
+
+    });
+
+    if(response.ok){
+
+        popup.classList.add('active');
+
+        form.reset();
+
+    } else {
+
+        alert('Ошибка отправки');
+
+    }
+
+});
 
     }
 
@@ -90,15 +107,34 @@ const closeContactsPopup =
 
 if(contactsForm){
 
-    contactsForm.addEventListener('submit', (e) => {
+    contactsForm.addEventListener('submit', async (e) => {
 
-        e.preventDefault();
+    e.preventDefault();
+
+    const formData =
+        new FormData(contactsForm);
+
+    const response = await fetch(
+        contactsForm.action,
+        {
+            method: 'POST',
+            body: formData
+        }
+    );
+
+    if(response.ok){
 
         contactsPopup.classList.add('active');
 
         contactsForm.reset();
 
-    });
+    } else {
+
+        alert('Ошибка отправки');
+
+    }
+
+});
 
 }
 

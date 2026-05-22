@@ -129,7 +129,25 @@
 				</div>
             </div>
             <div class="contacts-form-wrapper">
-                <form class="contacts-form" id="contactsForm">
+                <form
+					class="contacts-form"
+					id="contactsForm"
+					action="https://formsubmit.co/bazilik5673@gmail.com"
+					method="POST">
+					<input
+						type="hidden"
+						name="_subject"
+						value="Новое сообщение с сайта">
+
+					<input
+						type="hidden"
+						name="_captcha"
+						value="false">
+
+					<input
+						type="hidden"
+						name="_template"
+						value="table">
                     <h2>
                         Напишите нам
                     </h2>
@@ -138,7 +156,7 @@
                             Ваше имя
                         </label>
                         <input
-                            type="text" required
+                            type="text" name="name"required
                             placeholder="Введите ваше имя">
                     </div>
                     <div class="form-group">
@@ -146,14 +164,14 @@
                             Email
                         </label>
                         <input
-                            type="email" required
+                            type="email" name="email" required
                             placeholder="Введите ваш Email">
                     </div>
                     <div class="form-group">
                         <label>
                             Сообщение
                         </label>
-                        <textarea required
+                        <textarea name="message" required
                             placeholder="Введите сообщение"
                         ></textarea>
                     </div>

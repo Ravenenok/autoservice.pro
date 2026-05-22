@@ -63,8 +63,24 @@
             </div>
             <div class="booking-wrapper">
                 <form
-                    class="booking-form"
-                    id="bookingForm">
+					class="booking-form"
+					id="bookingForm"
+					action="https://formsubmit.co/bazilik5673@gmail.com"
+					method="POST">
+					<input
+						type="hidden"
+						name="_subject"
+						value="Новая запись на сервис">
+
+					<input
+						type="hidden"
+						name="_captcha"
+						value="false">
+
+					<input
+						type="hidden"
+						name="_template"
+						value="table">
                     <div class="form-group">
                         <label>
                             Ваше имя <span>*</span>
@@ -118,7 +134,10 @@
                         <label>
                             Дата
                         </label>
-                        <input type="date" id="bookingDate">
+                        <input
+							type="date"
+							id="bookingDate"
+							name="date">
                     </div>
                     <div class="form-group">
                         <label>

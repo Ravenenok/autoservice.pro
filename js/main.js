@@ -64,12 +64,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const formData = new FormData(form);
 
-    const response = await fetch(form.action, {
+const response = await fetch(form.action, {
 
-        method: 'POST',
-        body: formData
+    method: 'POST',
 
-    });
+    body: formData,
+
+    headers: {
+        'Accept': 'application/json'
+    }
+
+});
 
     if(response.ok){
 
@@ -114,13 +119,18 @@ if(contactsForm){
     const formData =
         new FormData(contactsForm);
 
-    const response = await fetch(
-        contactsForm.action,
-        {
-            method: 'POST',
-            body: formData
+const response = await fetch(
+    contactsForm.action,
+    {
+        method: 'POST',
+
+        body: formData,
+
+        headers: {
+            'Accept': 'application/json'
         }
-    );
+    }
+);
 
     if(response.ok){
 
